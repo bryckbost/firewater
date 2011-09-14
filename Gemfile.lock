@@ -1,0 +1,38 @@
+GIT
+  remote: git://github.com/bryckbost/grim.git
+  revision: 04d334f4eb0e6e9219fd61d1a4f547c0dc845036
+  specs:
+    grim (0.2.3)
+      safe_shell (~> 1.0.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    archive-tar-minitar (0.5.2)
+    bson (1.3.1)
+    bson_ext (1.3.1)
+    columnize (0.3.4)
+    linecache19 (0.5.12)
+      ruby_core_source (>= 0.1.4)
+    mongo (1.3.1)
+      bson (>= 1.3.1)
+    ruby-debug-base19 (0.11.25)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.5)
+      archive-tar-minitar (>= 0.5.2)
+    safe_shell (1.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bson_ext
+  grim!
+  mongo
+  ruby-debug19
