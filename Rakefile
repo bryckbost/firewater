@@ -15,18 +15,18 @@ namespace :import do
   desc "import price book"
   task :price_book do
     CSV.foreach("docs/price_book.csv", {:headers => true, :skip_blanks => true}) do |row|
-      import_row
+      import_row(row)
     end
   end
 
   desc "import supplemental price book"
   task :supplemental do
     CSV.foreach("docs/supplemental_price_book.csv", {:headers => true, :skip_blanks => true}) do |row|
-      import_row
+      import_row(row)
     end
   end
 
-  def import_row
+  def import_row(row)
     if row["BRAND NAME"] && row["MINIMUM"]
       row_hash = row.to_hash.delete_if{|k,v| k.nil?}
       mongo.collection("liquors").insert row_hash
