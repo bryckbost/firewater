@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FireWater</title>
+    <%= stylesheet_link_tag "http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css" %>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="fill">
+        <div class="container">
+          <h3 id="title">FireWater</h3>
+          <ul class="nav secondary-nav">
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Log In</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <section id="primary">
+      <div class="container">
+        <ul>
+          <% @liquors.each do |liquor| %>
+            <li><%= liquor["BRAND NAME"] %> – <%= liquor["MINIMUM"] %></li>
+          <% end %>
+        </ul>
+      </div>
+    </section>
+    <footer id="footer">
+      <div class="inner">
+        <div class="container">
+          <p>© FireWater, <%= Date.current.year %></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
