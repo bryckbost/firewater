@@ -1,11 +1,14 @@
 require "bundler/setup"
 Bundler.require
+require 'csv'
+require 'json'
 
-# db = Mongo::Connection.new.db("firewater_development")
-# collection = db.collection("michigan")
-# collection.insert(doc)
+db = Mongo::Connection.new("localhost").db("firewater_development")
+collection = db.collection("liquors")
 
-pdf = Grim.reap("Price_Book_1-30-11_thru_4-30-11_342054_7.pdf")
-pdf.each do |page|
-  puts page.text
+CSV.foreach("docs/price_book.csv", {:headers => true, :skip_blanks => true}) do |row|
+  if row["BRAND NAME"] && row["MINIMUM"]
+    row_hash = row.to_hash.delete_if{|k,v| k.nil?}
+    collection.insert row_hash
+  end
 end
