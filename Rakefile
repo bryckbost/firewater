@@ -5,7 +5,7 @@ require 'json'
 require 'uri'
 
 namespace :import do
-  url = URI(ENV['MONGO_URL'])
+  url = URI(ENV['MONGOHQ_URL'])
   connection = Mongo::Connection.new(url.host, url.port)
   mongo = connection.db(url.path[1..-1], {})
   if url.user && url.password

@@ -3,7 +3,7 @@ Bundler.require
 require 'sinatra/mongo'
 MultiJson.engine = :yajl
 
-set :mongo, ENV['MONGO_URL']
+set :mongo, ENV['MONGOHQ_URL']
 
 get '/' do
   content_type :json
