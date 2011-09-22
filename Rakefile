@@ -5,11 +5,14 @@ require 'json'
 require 'uri'
 
 namespace :import do
-  url = URI(ENV['MONGOHQ_URL'])
-  connection = Mongo::Connection.new(url.host, url.port)
-  mongo = connection.db(url.path[1..-1], {})
-  if url.user && url.password
-    mongo.authenticate(url.user, url.password)
+  def mongo
+    url = URI(ENV['MONGOHQ_URL'])
+    connection = Mongo::Connection.new(url.host, url.port)
+    mongo = connection.db(url.path[1..-1], {})
+    if url.user && url.password
+      mongo.authenticate(url.user, url.password)
+    end
+    mongo
   end
 
   desc "import price book"
