@@ -13,14 +13,14 @@ namespace :import do
   end
 
   desc "import price book"
-  task :price_book => :environment do
+  task :price_book do
     CSV.foreach("docs/price_book.csv", {:headers => true, :skip_blanks => true}) do |row|
       import_row
     end
   end
 
   desc "import supplemental price book"
-  task :supplemental => :environment do
+  task :supplemental do
     CSV.foreach("docs/supplemental_price_book.csv", {:headers => true, :skip_blanks => true}) do |row|
       import_row
     end
