@@ -7,5 +7,3 @@ gem 'sinatra-mongo'
 gem 'thin'
 gem 'multi_json'
 gem 'yajl-ruby'
-
-gem 'ruby-debug19'
