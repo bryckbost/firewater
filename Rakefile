@@ -8,7 +8,9 @@ namespace :import do
   url = URI(ENV['MONGO_URL'])
   connection = Mongo::Connection.new(url.host, url.port)
   mongo = connection.db(url.path[1..-1], {})
-  mongo.authenticate(url.user, url.password)
+  if url.user && url.password
+    mongo.authenticate(url.user, url.password)
+  end
 
   desc "import price book"
   task :price_book => :environment do
