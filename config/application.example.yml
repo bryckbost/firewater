@@ -1,0 +1,2 @@
+GAUGES_KEY: analytics_tracking_api_key
+MONGOHQ_URL: mongo_url
