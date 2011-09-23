@@ -1,0 +1,3 @@
+h1. FireWater
+
+FireWater, is a tool for checking the minimum retail price of liquors sold in Michigan.
