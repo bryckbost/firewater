@@ -18,7 +18,6 @@ h2. Improvements
 * dollar formatting (Add commas)
 * expand or normalize some of the names
 ** J Daniels => Jack Daniels is on that sticks out
-** iOS friendly responsive design
 * a separate iOS app
 * add links to tweet this fast fact
 * build out and improve parser
