@@ -16,21 +16,46 @@ helpers do
   def friendly_name(liquor_name)
     liquor_name.downcase.titleize
   end
+
+  def per_page
+    150
+  end
+
+  def current_page
+    [params[:page].to_i, 1].max
+  end
+
+  def number_of_pages
+    liquor_count / per_page
+  end
+
+  def liquor_count
+    @liquor_count ||= mongo["liquors"].find().count
+  end
+
+  def previous_page
+    current_page - 1
+  end
+
+  def next_page
+    current_page + 1
+  end
 end
 
 # only set the random liquor for non /api endpoints
 before /^\/((?!api).*)/ do
-  liquors = mongo["liquors"].find()
-  @header_liquor = liquors.skip(rand(liquors.count)).limit(1).first
+  @header_liquor = mongo["liquors"].find().skip(rand(liquor_count)).limit(1).first
 end
 
 get '/' do
-  @liquors = mongo["liquors"].find().limit(150).to_a
+  @liquors = mongo["liquors"].find({}, :sort => [['BRAND NAME', 1]]).limit(per_page).to_a
+  @paginate = true
   erb :index
 end
 
 get '/page/:page' do
-  @liquors = mongo["liquors"].find().skip(150 * params[:page].to_i).limit(150).to_a
+  @liquors = mongo["liquors"].find().skip(per_page * params[:page].to_i).limit(per_page).to_a
+  @paginate = true
   erb :index
 end
 

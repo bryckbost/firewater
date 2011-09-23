@@ -64,23 +64,6 @@
                 <% end %>
               </tbody>
             </table>
-
-            <div class="pagination">
-              <ul>
-                <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-                <li class="active"><a href="/">1</a></li>
-                <li><a href="/page/2">2</a></li>
-                <li><a href="/page/3">3</a></li>
-                <li><a href="/page/4">4</a></li>
-                <li><a href="/page/5">5</a></li>
-                <li><a href="/page/6">6</a></li>
-                <li><a href="/page/7">7</a></li>
-                <li><a href="/page/8">8</a></li>
-                <li><a href="/page/9">9</a></li>
-                <li><a href="/page/10">10</a></li>
-                <li class="next"><a href="#">Next &rarr;</a></li>
-              </ul>
-            </div>
           </div>
           <div class="span4">
             <h3>What's This All About?</h3>
@@ -88,6 +71,23 @@
             <p>However, they may not charge a lower price than the minimum retail shelf price set by the Michigan Liquor Control Commission. <em>Are you getting your money's worth?</em></p>
           </div>
         </div>
+        <% if @paginate %>
+          <div class="row">
+            <div class="span14">
+              <div class="pagination">
+                <ul>
+                  <li class="prev disabled"><a href="/page/<%= previous_page %>">&larr; Previous</a></li>
+                  <% 15.times do |i| %>
+                    <% page = i + current_page %>
+                    <% break if page > number_of_pages %>
+                    <li class="<%= 'active' if current_page == page %>"><a href="/page/<%= page %>"><%= page %></a></li>
+                  <% end %>
+                  <li class="next"><a href="/page/<%= next_page %>">Next &rarr;</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
       <footer>
         <p>&copy; FireWater 2011</p>
