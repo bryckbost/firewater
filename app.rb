@@ -40,6 +40,10 @@ helpers do
   def next_page
     current_page + 1
   end
+
+  def scope(options={})
+    mongo["liquors"].find(options, :sort => [['BRAND NAME', 1]])
+  end
 end
 
 # only set the random liquor for non /api endpoints
@@ -48,19 +52,19 @@ before /^\/((?!api).*)/ do
 end
 
 get '/' do
-  @liquors = mongo["liquors"].find({}, :sort => [['BRAND NAME', 1]]).limit(per_page).to_a
+  @liquors = scope.limit(per_page).to_a
   @paginate = true
   erb :index
 end
 
 get '/page/:page' do
-  @liquors = mongo["liquors"].find().skip(per_page * params[:page].to_i).limit(per_page).to_a
+  @liquors = scope.skip(per_page * params[:page].to_i).limit(per_page).to_a
   @paginate = true
   erb :index
 end
 
 get '/search' do
-  @liquors = mongo["liquors"].find({"BRAND NAME" => /#{params[:q]}/i}).to_a
+  @liquors = scope({"BRAND NAME" => /#{params[:q]}/i}).to_a
   erb :index
 end
 

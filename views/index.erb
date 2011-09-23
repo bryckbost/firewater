@@ -25,9 +25,9 @@
     <div class="topbar">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="#"><span class="fire">Fire</span><span class="water">Water</span></a>
+          <a class="brand" href="/"><span class="fire">Fire</span><span class="water">Water</span></a>
           <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -58,8 +58,8 @@
                 <% @liquors.each do |liquor| %>
                   <tr>
                     <td><%= friendly_name liquor["BRAND NAME"] %></td>
-                    <td><%= liquor["SIZE"] %></td>
-                    <td><%= liquor["MINIMUM"] %></td>
+                    <td class="justify-right"><%= liquor["SIZE"] %></td>
+                    <td class="justify-right">$<%= liquor["MINIMUM"] %></td>
                   </tr>
                 <% end %>
               </tbody>
