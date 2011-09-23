@@ -47,6 +47,10 @@
           <h1>
             <span class="fire">Fire</span><span class="water">Water</span> <small>what <em>should</em> that <%= @header_liquor["SIZE"] %>mL bottle of <span rel="twipsy" title="The minimum shelf price is $<%= @header_liquor["MINIMUM"] %>"><%= friendly_name(@header_liquor) %></span> cost?</small>
           </h1>
+          <form action="/search" class="" method="get">
+            <input class="xlarge" type="text" name="q" placeholder="Jim Beam, Glenmorangie…">
+            <button class="btn" type="submit">Search</button>
+          </form>
         </div>
         <div class="row">
           <div class="span10">
