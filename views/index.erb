@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/application.css" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script src="http://twitter.github.com/bootstrap/1.3.0/bootstrap-modal.js" async></script>
     <script>
       $(function() {
         $("table").tablesorter();
@@ -28,8 +29,7 @@
           <a class="brand" href="/"><span class="fire">Fire</span><span class="water">Water</span></a>
           <ul class="nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about" data-controls-modal="about" data-backdrop="true">About</a></li>
           </ul>
           <form action="/search" class="pull-right" method="get">
             <input class="xlarge" type="text" name="q" placeholder="Search for Jim Beam, Glenmorangie…">
@@ -41,7 +41,9 @@
     <div class="container">
       <div class="content">
         <div class="page-header">
-          <h1><span class="fire">Fire</span><span class="water">Water</span> <small>what <strong>should</strong> that bottle of <%= friendly_name(@header_liquor["BRAND NAME"]) %> cost?</small></h1>
+          <h1>
+            <span class="fire">Fire</span><span class="water">Water</span> <small>what <em>should</em> that bottle of <%= friendly_name(@header_liquor["BRAND NAME"]) %> cost?</small>
+          </h1>
         </div>
         <div class="row">
           <div class="span10">
@@ -88,6 +90,21 @@
             </div>
           </div>
         <% end %>
+      </div>
+      <div class="modal hide fade" id="about">
+        <div class="modal-header">
+          <a href="#" class="close">×</a>
+          <h3>About FireWater</h3>
+        </div>
+        <div class="modal-body">
+          <p>As of November 30, 2004, liquor license holders may charge a higher price than the state’s set minimum retail selling price.</p>
+          <p>However, they may not charge a lower price than the minimum retail shelf price set by the Michigan Liquor Control Commission. <em>Are you getting your money's worth?</em></p>
+          <p>FireWater, then, is a tool for checking the minimum retail price while you're shopping. <em>How high is your corner store marking up prices?</em></p>
+
+          <p>The idea to parse Michigan's Liquor Price Book came from <a href="https://twitter.com/#!/rharlow">Rick Harlow</a> when he stopped by our office with a bag full of whiskey a while back. <a href="https://twitter.com/#!/bryckbost">Brian Ryckbost</a> then took that idea and ran with it, building the app you're now using.</p>
+        </div>
+        <div class="modal-footer">
+        </div>
       </div>
       <footer>
         <p>&copy; FireWater 2011</p>
