@@ -13,6 +13,13 @@
 
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="css/application.css" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script>
+      $(function() {
+        $("table").tablesorter();
+      });
+    </script>
   </head>
   <body>
     <div class="topbar">
@@ -39,11 +46,24 @@
         <div class="row">
           <div class="span10">
             <h2>Michigan Liquor Control Commission Price List</h2>
-            <ul>
-              <% @liquors.each do |liquor| %>
-                <li><%= liquor["BRAND NAME"] %> – <%= liquor["MINIMUM"] %></li>
-              <% end %>
-            </ul>
+            <table class="zebra-striped">
+              <thead>
+                <tr>
+                  <th>Brand Name</th>
+                  <th>Size (mL)</th>
+                  <th>Minimum Shelf Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @liquors.each do |liquor| %>
+                  <tr>
+                    <td><%= liquor["BRAND NAME"] %></td>
+                    <td><%= liquor["SIZE"] %></td>
+                    <td><%= liquor["MINIMUM"] %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
           <div class="span4">
             <h3>What's This All About?</h3>

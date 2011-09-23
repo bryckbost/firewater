@@ -55,3 +55,8 @@ h1, h2, h3 {
 .brand {
   font-family: 'Oswald', san-serif;
 }
+
+table {
+  margin-top: 8px;
+  width: 97%;
+}
