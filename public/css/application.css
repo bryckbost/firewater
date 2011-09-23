@@ -65,6 +65,9 @@ table {
 .page-header form {
   display: none;
 }
+dd {
+  margin-bottom: 5px;
+}
 
 @media screen and (max-device-width: 480px) {
   .container, .topbar, .span10, .span4, .modal, .span14 {
