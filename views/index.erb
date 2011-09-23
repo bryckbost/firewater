@@ -61,7 +61,7 @@
                 <% @liquors.each do |liquor| %>
                   <tr>
                     <td><%= friendly_name liquor["BRAND NAME"] %></td>
-                    <td><%= liquor["PROOF"] %></td>
+                    <td class="justify-right"><%= liquor["PROOF"] %></td>
                     <td class="justify-right"><%= liquor["SIZE"] %></td>
                     <td class="justify-right">$<%= liquor["MINIMUM"] %></td>
                   </tr>
