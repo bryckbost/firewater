@@ -6,3 +6,5 @@ gem 'sinatra'
 gem 'sinatra-mongo'
 gem 'multi_json'
 gem 'yajl-ruby'
+gem 'activesupport', :require => false
+gem 'i18n'
