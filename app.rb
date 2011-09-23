@@ -13,8 +13,16 @@ end
 set :mongo, ENV['MONGOHQ_URL']
 
 helpers do
-  def friendly_name(liquor_name)
-    liquor_name.downcase.titleize
+  def friendly_name(liquor)
+    if liquor && liquor["BRAND NAME"]
+      liquor["BRAND NAME"].downcase.titleize
+    else
+      ""
+    end
+  end
+
+  def price_per_milliliter(liquor)
+    liquor["PRICE"] / liquor["SIZE"]
   end
 
   def per_page
@@ -43,6 +51,30 @@ helpers do
 
   def scope(options={})
     mongo["liquors"].find(options, :sort => [['BRAND NAME', 1]])
+  end
+
+  def most_expensive
+    mongo["liquors"].find({}, :sort => [['MINIMUM', -1]]).limit(1).first
+  end
+
+  def cheapest
+    mongo["liquors"].find({}, :sort => [['MINIMUM', 1]]).limit(1).first
+  end
+
+  def highest_proof
+    mongo["liquors"].find({}, :sort => [['PROOF', -1]]).limit(1).first
+  end
+
+  def weakest_proof
+    mongo["liquors"].find({}, :sort => [['PROOF', 1]]).limit(1).first
+  end
+
+  def best_value
+    mongo["liquors"].find({}, :sort => [['VALUE', -1]]).limit(1).first
+  end
+
+  def biggest_ripoff
+    mongo["liquors"].find({}, :sort => [['VALUE', 1]]).limit(1).first
   end
 end
 

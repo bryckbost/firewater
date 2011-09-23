@@ -12,11 +12,6 @@ h2. Improvements
 * parse categories from the CSV, add to database
 * allow sorting/filtering by category
 * fast facts
-** most expensive liquor
-** cheapest liquor
-** highest proof
-** weakest proof
-** biggest ripoff – highest price for weakest proof
 ** Most popular fruit
 * make it work offline (in case people are searching from a Duty Free)
 * tie locations to liquors (FourSquare integration)
@@ -29,3 +24,4 @@ h2. Improvements
 * build out and improve parser
 **  grab new files, add|remove|update liquors
 * Other states!
+* include count of liquors

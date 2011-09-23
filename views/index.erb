@@ -4,9 +4,9 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <title>FireWater</title>
-    <meta name="description" content="What's the minimum shelf price of this liquor?">
+    <meta name="description" content="Find out what is the minimum shelf price of a certain liquor allowed by the Michigan Liquor Control Commision with FireWater.">
     <meta name="author" content="Brian Ryckbost">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -16,9 +16,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="http://twitter.github.com/bootstrap/1.3.0/bootstrap-modal.js" async></script>
+    <script src="http://twitter.github.com/bootstrap/1.3.0/bootstrap-twipsy.js"></script>
     <script>
       $(function() {
         $("table").tablesorter();
+        $("span[rel=twipsy]").twipsy();
+        $("dt[rel=twipsy]").twipsy({placement: 'left'});
       });
     </script>
   </head>
@@ -42,7 +45,7 @@
       <div class="content">
         <div class="page-header">
           <h1>
-            <span class="fire">Fire</span><span class="water">Water</span> <small>what <em>should</em> that bottle of <%= friendly_name(@header_liquor["BRAND NAME"]) %> cost?</small>
+            <span class="fire">Fire</span><span class="water">Water</span> <small>what <em>should</em> that <%= @header_liquor["SIZE"] %>mL bottle of <span rel="twipsy" title="The minimum shelf price is $<%= @header_liquor["MINIMUM"] %>"><%= friendly_name(@header_liquor) %></span> cost?</small>
           </h1>
         </div>
         <div class="row">
@@ -60,7 +63,7 @@
               <tbody>
                 <% @liquors.each do |liquor| %>
                   <tr>
-                    <td><%= friendly_name liquor["BRAND NAME"] %></td>
+                    <td><%= friendly_name liquor %></td>
                     <td class="justify-right"><%= liquor["PROOF"] %></td>
                     <td class="justify-right"><%= liquor["SIZE"] %></td>
                     <td class="justify-right">$<%= liquor["MINIMUM"] %></td>
@@ -73,6 +76,23 @@
             <h3>What's This All About?</h3>
             <p>As of November 30, 2004, liquor license holders may charge a higher price than the state’s set minimum retail selling price.</p>
             <p>However, they may not charge a lower price than the minimum retail shelf price set by the Michigan Liquor Control Commission. <em>Are you getting your money's worth?</em></p>
+            <p><a href="#about" data-controls-modal="about" data-backdrop="true">Read more…</a></p>
+
+            <h3>Fast Facts</h3>
+            <dl class="facts">
+              <dt>Most Expensive</dt>
+              <dd><%=friendly_name most_expensive %> – $<%= most_expensive["MINIMUM"] %> for <%= most_expensive["SIZE"] %>mL</dd>
+              <dt>Least Expensive</dt>
+              <dd><%=friendly_name cheapest %> – $<%= cheapest["MINIMUM"] %> for <%= cheapest["SIZE"] %>mL</dd>
+              <dt>Highest Proof</dt>
+              <dd><%=friendly_name highest_proof %> – <%= highest_proof["PROOF"] %> proof</dd>
+              <dt>Lowest Proof</dt>
+              <dd><%=friendly_name weakest_proof %> – <%= weakest_proof["PROOF"] %> proof</dd>
+              <dt rel="twipsy" title="Best bang for your buck!">Best Value</dt>
+              <dd><%=friendly_name best_value %> – $<%= best_value["MINIMUM"] %> for <%= best_value["SIZE"] %>mL</dd>
+              <dt rel="twipsy" title="Highest price for the weakest proof">Biggest Ripoff</dt>
+              <dd><%=friendly_name biggest_ripoff %> – $<%= biggest_ripoff["MINIMUM"] %> for <%= biggest_ripoff["SIZE"] %>mL</dd>
+            </dl>
           </div>
         </div>
         <% if @paginate %>
