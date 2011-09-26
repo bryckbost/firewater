@@ -2,7 +2,7 @@ h1. FireWater
 
 FireWater is an app for checking the minimum retail price of liquors sold in Michigan.
 
-h2. Improvements
+h2. Improvements & Things to Think About
 
 * detail page for a liquor
 * more advanced searching
@@ -24,3 +24,11 @@ h2. Improvements
 **  grab new files, add|remove|update liquors
 * Other states!
 * include count of liquors
+* add page about /api
+* what could be done with data from multiple states?
+**  search by state
+**  show diffs between states (useful if you live near a border?)
+**  most common liquor
+**  rarest liquor
+**  fast facts nationwide and per state
+* figure out how to make money…
