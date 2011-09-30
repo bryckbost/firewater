@@ -32,7 +32,7 @@
     <div class="topbar">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="/"><span class="fire">Fire</span><span class="water">Water</span></a>
+          <a class="brand" href="/">LiquorList</a>
           <ul class="nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="#about" data-controls-modal="about" data-backdrop="true">About</a></li>
@@ -48,7 +48,7 @@
       <div class="content">
         <div class="page-header">
           <h1>
-            <span class="fire">Fire</span><span class="water">Water</span> <small>what <em>should</em> that <%= @header_liquor["SIZE"] %>mL bottle of <span rel="twipsy" title="The minimum shelf price is $<%= @header_liquor["MINIMUM"] %>!"><%= friendly_name(@header_liquor) %></span> cost?</small>
+            LiquorList <small>what <em>should</em> that <%= @header_liquor["SIZE"] %>mL bottle of <span rel="twipsy" title="The minimum shelf price is $<%= @header_liquor["MINIMUM"] %>!"><%= friendly_name(@header_liquor) %></span> cost?</small>
           </h1>
           <form action="/search" class="" method="get">
             <input class="xlarge" type="text" name="q" placeholder="Jim Beam, Glenmorangie…">
