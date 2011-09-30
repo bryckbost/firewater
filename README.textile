@@ -1,6 +1,6 @@
-h1. FireWater
+h1. LiquorList
 
-FireWater is an app for checking the minimum retail price of liquors sold in Michigan.
+LiquorList is an app for checking the minimum retail price of liquors sold in Michigan.
 
 h2. Improvements & Things to Think About
 
