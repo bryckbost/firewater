@@ -57,7 +57,11 @@
         </div>
         <div class="row">
           <div class="span10">
-            <h2>Michigan Liquor Control Commission Price List</h2>
+            <% if @category %>
+              <h2>Viewing <%= @liquors.size %> liquors in <%= @category.titleize %></h2>
+            <% else %>
+              <h2>Viewing <%= (current_page - 1) * per_page + 1 %> – <%= [(current_page - 1) * per_page + per_page, liquor_count].min %> of <%= liquor_count %> liquors</h2>
+            <% end %>
             <table class="zebra-striped">
               <thead>
                 <tr>

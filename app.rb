@@ -100,6 +100,13 @@ get '/search' do
   erb :index
 end
 
+# GET /vodka, /scotch, /whisky, /bourbon …
+get '/:category' do
+  @category = params[:category]
+  @liquors = scope({"CATEGORY" => /#{@category}/i}).to_a
+  erb :index
+end
+
 get '/api/all' do
   content_type :json
   MultiJson.encode mongo["liquors"].find().to_a
