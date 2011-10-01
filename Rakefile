@@ -36,6 +36,25 @@ namespace :import do
     end
   end
 
+  desc "Add categories"
+  task :add_categories do
+    category ||= nil
+    CSV.foreach("docs/supplemental_price_book.csv", {:headers => true, :skip_blanks => true}) do |row|
+      # if first row is present && second row is blank
+      if !(row[0] !~ /\S/) && row[1] !~ /\S/
+        # strip (CONTINUED) from the row
+        category = row[0].gsub(/\s\(.+/, "")
+      end
+
+      # update this liquor if the row has a brand and a minimum price
+      if row["BRAND NAME"] && row["MINIMUM"]
+        liquor = mongo.collection("liquors").find({"BRAND NAME" => row["BRAND NAME"], "MINIMUM" => row["MINIMUM"].to_f}).first
+        next if !(liquor["CATEGORY"] !~ /\S/)
+        mongo.collection("liquors").update({"_id" => liquor["_id"]}, {"$set" => {"CATEGORY" => category}})
+      end
+    end
+  end
+
   desc "convert types"
   task :convert_types do
     liquors_collection = mongo.collection("liquors")
