@@ -89,6 +89,11 @@ get '/' do
   erb :index
 end
 
+get '/liquors/:id' do
+  @liquor = mongo["liquors"].find({"_id" => BSON::ObjectId(params[:id])}).first
+  erb :show
+end
+
 get '/page/:page' do
   @liquors = scope.skip(per_page * params[:page].to_i).limit(per_page).to_a
   @paginate = true
