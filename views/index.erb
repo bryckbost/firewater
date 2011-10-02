@@ -58,7 +58,9 @@
         </div>
         <div class="row">
           <div class="span10">
-            <% if @category %>
+            <% if params[:q] %>
+              <h2><%= @liquors.size %> results for <%= params[:q].downcase.titleize %></h2>
+            <% elsif @category %>
               <h2>Viewing <%= @liquors.size %> liquors in <%= @category.downcase.titleize %></h2>
             <% else %>
               <h2>Viewing <%= (current_page - 1) * per_page + 1 %> – <%= [(current_page - 1) * per_page + per_page, liquor_count].min %> of <%= liquor_count %> liquors</h2>

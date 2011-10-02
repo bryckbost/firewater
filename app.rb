@@ -103,7 +103,7 @@ get '/page/:page' do
 end
 
 get '/search' do
-  results = indextank.indexes('idx').search(params[:q])
+  results = indextank.indexes('idx').search(params[:q], :len => 500)
   liquors = results["results"].map{|r| BSON::ObjectId(r["docid"])}
   @liquors = mongo["liquors"].find({"_id" => {"$in" => liquors}}).to_a
   erb :index
