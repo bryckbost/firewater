@@ -2,6 +2,7 @@
 require 'bundler/setup'
 Bundler.require
 require 'sinatra/mongo'
+require 'sinatra/indextank'
 require 'active_support/core_ext/string/inflections'
 MultiJson.engine = :yajl
 
@@ -11,6 +12,7 @@ if File.exist?('config/application.yml')
 end
 
 set :mongo, ENV['MONGOHQ_URL']
+set :indextank, ENV['INDEXTANK_API_URL']
 
 helpers do
   def friendly_name(liquor)
@@ -101,7 +103,9 @@ get '/page/:page' do
 end
 
 get '/search' do
-  @liquors = scope({"BRAND NAME" => /#{params[:q]}/i}).to_a
+  results = indextank.indexes('idx').search(params[:q])
+  liquors = results["results"].map{|r| BSON::ObjectId(r["docid"])}
+  @liquors = mongo["liquors"].find({"_id" => {"$in" => liquors}}).to_a
   erb :index
 end
 

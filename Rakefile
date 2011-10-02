@@ -4,17 +4,28 @@ require 'csv'
 require 'json'
 require 'uri'
 
-namespace :import do
-  def mongo
-    url = URI(ENV['MONGOHQ_URL'])
-    connection = Mongo::Connection.new(url.host, url.port)
-    mongo = connection.db(url.path[1..-1], {})
-    if url.user && url.password
-      mongo.authenticate(url.user, url.password)
-    end
-    mongo
-  end
+if File.exist?('config/application.yml')
+  config = YAML.load_file('config/application.yml')
+  config.each{|k,v| ENV[k] = v }
+end
 
+def mongo
+  url = URI(ENV['MONGOHQ_URL'])
+  connection = Mongo::Connection.new(url.host, url.port)
+  mongo = connection.db(url.path[1..-1], {})
+  if url.user && url.password
+    mongo.authenticate(url.user, url.password)
+  end
+  mongo
+end
+
+def indextank
+  client = IndexTank::Client.new(ENV['INDEXTANK_API_URL'])
+  index = client.indexes('idx')
+  index
+end
+
+namespace :import do
   desc "import price book"
   task :price_book do
     CSV.foreach("docs/price_book.csv", {:headers => true, :skip_blanks => true}) do |row|
@@ -77,6 +88,18 @@ namespace :import do
     mongo.collection("liquors").find().each do |liquor|
       value = ((liquor["PROOF"] * liquor["SIZE"]) / liquor["MINIMUM"]).to_f
       mongo.collection("liquors").update({"_id" => liquor["_id"]}, {"$set" => {"VALUE" => value}})
+    end
+  end
+end
+
+namespace :indextank do
+  desc "add documents to index"
+  task :add_documents do
+    mongo.collection("liquors").find().each do |liquor|
+      indextank.document(liquor["_id"].to_s).add({:text => liquor["BRAND NAME"].downcase,
+        :category => (liquor["CATEGORY"] ? liquor["CATEGORY"].downcase : ""),
+        :price => liquor["MINIMUM"]
+      })
     end
   end
 end
