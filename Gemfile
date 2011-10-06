@@ -9,5 +9,5 @@ gem 'yajl-ruby'
 gem 'activesupport', :require => false
 gem 'i18n'
 gem 'indextank'
-gem 'sinatra-indextank', :git => 'git://github.com/bryckbost/sinatra-indextank.git'
+gem 'sinatra-indextank'
 gem 'newrelic_rpm'
