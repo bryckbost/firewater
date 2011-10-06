@@ -14,6 +14,10 @@ end
 set :mongo, ENV['MONGOHQ_URL']
 set :indextank, ENV['INDEXTANK_API_URL']
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
 helpers do
   def friendly_name(liquor)
     if liquor && liquor["BRAND NAME"]
