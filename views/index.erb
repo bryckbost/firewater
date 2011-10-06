@@ -39,7 +39,7 @@
             <li><a href="#about" data-controls-modal="about" data-backdrop="true">About</a></li>
           </ul>
           <form action="/search" class="pull-right" method="get">
-            <input class="xlarge" type="text" name="q" placeholder="Search for Jim Beam, Glenmorangie…">
+            <input class="xlarge" type="text" name="q" placeholder="Search for Jim Beam, Glenmorangie…" value="<%= params[:q] if params[:q] %>">
             <button class="btn" type="submit">Search</button>
           </form>
         </div>
