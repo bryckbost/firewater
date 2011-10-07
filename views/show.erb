@@ -121,7 +121,7 @@
                 js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
                 fjs.parentNode.insertBefore(js, fjs);
               }(document, 'script', 'facebook-jssdk'));</script>
-              <div class="fb-like" data-send="false" data-width="450" data-show-faces="true"></div>
+              <div class="fb-like" data-send="false" data-href="<%= request.url %>" data-width="450" data-show-faces="true"></div>
             </p>
           </div>
           <div class="span4">
