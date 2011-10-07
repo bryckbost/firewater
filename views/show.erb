@@ -10,6 +10,12 @@
     <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="shortcut icon" type="image/ico" href="/images/apple-touch-icon.png"/>
+    <meta property="og:title" content="<%=friendly_name @liquor %> – LiquorList" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://liquorli.st" />
+    <meta property="og:image" content="http://liquorli.st/images/apple-touch-icon.png" />
+    <meta property="og:site_name" content="LiquorList" />
+    <meta property="fb:admins" content="15300550" />
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -102,7 +108,21 @@
                 </tr>
               </tbody>
             </table>
-
+            <p>
+              <strong>Share these stats with your friends!</strong>
+            </p>
+            <p>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-text="<%=friendly_name @liquor %> (<%= @liquor["SIZE"] %>mL) has a minimum price of $<%= @liquor["MINIMUM"] %>" data-via="liquorlist" data-related="bryckbost">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+              <div id="fb-root"></div>
+              <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));</script>
+              <div class="fb-like" data-send="false" data-width="450" data-show-faces="true"></div>
+            </p>
           </div>
           <div class="span4">
             <h3>What's This All About?</h3>
