@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="/css/application.css" media="screen">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js"></script>
     <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="http://twitter.github.com/bootstrap/1.3.0/bootstrap-modal.js" async></script>
     <script src="http://twitter.github.com/bootstrap/1.3.0/bootstrap-twipsy.js"></script>
@@ -39,6 +39,7 @@
             <li><a href="#about" data-controls-modal="about" data-backdrop="true">About</a></li>
           </ul>
           <form action="/search" class="pull-right" method="get">
+            <a href="#search-settings" class="search-settings" data-controls-modal="search-settings" data-backdrop="true">Search</a>
             <input class="xlarge" type="text" name="q" placeholder="Search for Jim Beam, Glenmorangie…" value="<%= params[:q] if params[:q] %>">
             <button class="btn" type="submit">Search</button>
           </form>
@@ -144,6 +145,23 @@
         <div class="modal-footer">
         </div>
       </div>
+      <div class="modal hide fade" id="search-settings">
+        <div class="modal-header">
+          <a href="#" class="close">×</a>
+          <h3>Ways to Search LiquorList</h3>
+        </div>
+        <div class="modal-body">
+          <h3>Brand name</h3>
+          <p>Brand name search will look through the names of all the liquors on LiquorList.</p>
+          <h3>Category</h3>
+          <p>Category search will look through the categories of all the liquors on LiquorList. Try seraching with "category:scotch" or "category:whisky"</p>
+          <h3>Price</h3>
+          <p>Price search will look through the prices of all the liquors on LiquorList. Try seraching with "price:5.98"</p>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+
       <footer>
         <p>&copy; LiquorList 2011. Built by <a href="http://twitter.com/#!/bryckbost">Brian Ryckbost</a>, supported and sponsored by <a href="http://collectiveidea.com">Collective Idea</a>. <a href="http://indextank.com/utm_campaign=poweredby" name="Powered-by Indextank" rel="friend"><img src="http://indextank.com/_static/images/poweredby/idt-badge-sm.png" alt="IndexTank: hosted search you control"/></a></p>
       </footer>
