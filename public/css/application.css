@@ -80,6 +80,8 @@ dd {
   text-indent: -9999px;
   border-radius: 4px;
   padding: 2px;
+  position: relative;
+  top: -5px;
 }
 
 @media screen and (max-device-width: 480px) {
