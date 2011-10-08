@@ -5,15 +5,11 @@ LiquorList is an app for checking the minimum retail price of liquors sold in Mi
 h2. Improvements & Things to Think About
 
 * more advanced searching
-** stemming
 ** handling of punctuation
-* fast facts
-** Most popular fruit
 * make it work offline (in case people are searching from a Duty Free)
 * tie locations to liquors (FourSquare integration)
 * dollar formatting (Add commas)
 * a separate iOS app
-* add links to tweet this fast fact
 * build out and improve parser
 **  grab new files, add|remove|update liquors
 * Other states!
