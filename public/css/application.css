@@ -26,16 +26,16 @@ body {
 }
 
 p {
-font-size: 16px;
+font-size: 15px;
 line-height: 21px;
 margin-bottom: 12px;
 }
 dl dt, dl dd {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 21px;
 }
 tr {
-  font-size: 16px;
+  font-size: 15px;
 }
 td {
   white-space: nowrap;
