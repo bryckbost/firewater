@@ -93,7 +93,7 @@ dd {
   margin-bottom: 8px;
 }
 .search-settings {
-  background: #ddd url(/images/19-gear.png) no-repeat 2px 2px;
+  background: rgba(255,255,255,0.3) url(/images/19-gear.png) no-repeat 2px 2px;
   height: 26px;
   width: 26px;
   display: inline-block;
@@ -102,6 +102,9 @@ dd {
   padding: 2px;
   position: relative;
   top: -5px;
+}
+.search-settings:hover {
+  background: rgba(255,255,255,0.5) url(/images/19-gear.png) no-repeat 2px 2px;
 }
 
 @media screen and (max-device-width: 480px) {
