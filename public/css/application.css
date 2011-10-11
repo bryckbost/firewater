@@ -30,9 +30,13 @@ font-size: 15px;
 line-height: 21px;
 margin-bottom: 12px;
 }
+.span4 p {
+  font-size: 14px;
+  line-height: 20px;
+}
 dl dt, dl dd {
-  font-size: 15px;
-  line-height: 21px;
+  font-size: 14px;
+  line-height: 20px;
 }
 tr {
   font-size: 15px;
