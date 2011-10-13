@@ -1,2 +1,3 @@
 GAUGES_KEY: analytics_tracking_api_key
 MONGOHQ_URL: mongo_url
+INDEXTANK_API_URL: http://your_private_url.indextank.com
