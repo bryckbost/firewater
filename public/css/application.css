@@ -26,9 +26,9 @@ body {
 }
 
 p {
-font-size: 15px;
-line-height: 21px;
-margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 21px;
+  margin-bottom: 12px;
 }
 .span4 p {
   font-size: 14px;
@@ -133,6 +133,25 @@ dd {
   }
   .modal.fade.in {
     top: 5%;
+  }
+  td {
+    white-space: normal;
+  }
+  p {
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 8px;
+  }
+  .span4 p {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  dl dt, dl dd {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  tr {
+    font-size: 13px;
   }
 }
 
