@@ -130,3 +130,7 @@ get '/api/search' do
   MultiJson.encode mongo["liquors"].find({"BRAND NAME" => /#{params[:q]}/i}).to_a
 end
 
+get '/api/:category' do
+  content_type :json
+  MultiJson.encode mongo["liquors"].find({"CATEGORY" => /#{params[:category]}/i}).to_a
+end
