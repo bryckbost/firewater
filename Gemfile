@@ -2,7 +2,7 @@ source :rubygems
 gem 'rake'
 gem 'mongo'
 gem 'bson_ext'
-gem 'sinatra'
+gem 'sinatra', '~> 1.3.1'
 gem 'sinatra-mongo'
 gem 'multi_json'
 gem 'yajl-ruby'
